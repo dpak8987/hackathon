@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<testsuite name="Firefox 96.0.0 (Windows 10.0.0)" package="" timestamp="2022-02-05T07:08:17" id="0" hostname="DEEPAKKN-PC" tests="3" errors="0" failures="0" time="0.135">
+  <properties>
+    <property name="browser.fullName" value="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:96.0) Gecko/20100101 Firefox/96.0"/>
+  </properties>
+  <testcase name="Validation.vue Check validation for validtitle and whitespace" time="0.087" classname="Firefox_96_0_0_(Windows_10_0_0).Validation.vue"/>
+  <testcase name="Validation.vue Check validation for minimum characters and numbers" time="0.038" classname="Firefox_96_0_0_(Windows_10_0_0).Validation.vue"/>
+  <testcase name="Validation.vue Check validation for special characters" time="0.01" classname="Firefox_96_0_0_(Windows_10_0_0).Validation.vue"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

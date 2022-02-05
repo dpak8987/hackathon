@@ -1,18 +1,18 @@
 # Dockerfile
 FROM node:11.13.0-alpine
 
-# create destination directory
-RUN mkdir /hackapp
+# create working directory
 WORKDIR /hackapp
 
 # Add current directory code to working directory
-ADD . /hackapp/
+COPY package*.json ./
+COPY .postcssrc.js ./
+COPY index.html ./
 
 RUN npm install
 
 EXPOSE 8080
 
-ENV NUXT_HOST=0.0.0.0
-ENV NUXT_PORT=8080
+# CMD [ "npm", "run", "dev" ]
 
 

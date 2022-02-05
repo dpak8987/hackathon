@@ -38,10 +38,10 @@ export default {
             let whiteSpaceRegex = /^[^\s]+(\s+[^\s]+)*$/;
             if(this.inputValue !== "") {
                 if (!(this.inputValue instanceof Object) ) {
-                return !whiteSpaceRegex.test(this.inputValue);
+                return whiteSpaceRegex.test(this.inputValue);
             }
             }
-            return false;
+            return true;
         },
         // Check if there are any special charaters
         hasSpecialChars () {
@@ -57,19 +57,19 @@ export default {
         hasValidTitle () {
             let validTitle = /^[a-zA-Z0-9 ]*$/;
             if (!(this.inputValue instanceof Object)) {
-                return !validTitle.test(this.inputValue);
+                return validTitle.test(this.inputValue);
             }
-            return false;
+            return true;
         },
          // Check if input has only numbers
         hasNumbers () {
             if(this.inputValue !== undefined) {
                 let validNumber = /\b\d{4}\b/;
                 if (!(this.inputValue instanceof Object)) {
-                    return !validNumber.test(this.inputValue);
+                    return validNumber.test(this.inputValue);
                 }
             }
-            return false;
+            return true;
         },
         // Check if there are any special charaters or numbers
         hasValidTags () {
@@ -86,10 +86,10 @@ export default {
             if(this.inputValue !== undefined) {
                 let inputTrim = this.inputValue.trim();
                 if (inputTrim.length < 30) {
-                    return true;
+                    return false;
                 }
-                return false;
             }
+            return true;
         },
         // Check if input has any error
         hasInvalidInput () {
@@ -108,39 +108,39 @@ export default {
             const hasNumbers = this.hasNumbers;
 
             if (this.checkFor.includes('validtitle')) {
-                if (hasValidTitle) {
+                if (!hasValidTitle) {
                     errorInfo = errorInfo ? errorInfo + ' AND ' : '';
-                    errorInfo += ('please enter valid name ');
+                    errorInfo += ('please enter valid name');
                     titleHasError = true;
                 }
             }
 
             if (this.checkFor.includes('numbers')) {
-                if (hasNumbers) {
+                if (!hasNumbers) {
                     errorInfo = errorInfo ? errorInfo + ' AND ' : '';
-                    errorInfo += ('Please provide only 4 digit numbers ');
+                    errorInfo += ('Please provide only 4 digit numbers');
                     numberHasError = true;
                 }
             }
 
             if (this.checkFor.includes('whitespace')) {
-                if (hasSpace) {
+                if (!hasSpace) {
                     errorInfo = errorInfo ? errorInfo + ' AND ' : '';
-                    errorInfo += (' should not start/end with whitespaces');
+                    errorInfo += ('should not start/end with whitespaces');
                     whitespaceError = true;
                 }
             }
             if (this.checkFor.includes('specialchars')) {
                 if (hasSplChars) {
                     errorInfo = errorInfo ? errorInfo + ' AND ' : '';
-                    errorInfo += (' cannot have special characters ');
+                    errorInfo += ('cannot have special characters');
                     specialCharsError = true;
                 }
             }
             if (this.checkFor.includes('minimumchar')) {
-                if (hasMinimumChar) {
+                if (!hasMinimumChar) {
                     errorInfo = errorInfo ? errorInfo + ' AND ' : '';
-                    errorInfo += ('description should contain minimum 20 characters ');
+                    errorInfo += ('description should contain minimum 20 characters');
                     minimumCharError = true;
                 }
             }

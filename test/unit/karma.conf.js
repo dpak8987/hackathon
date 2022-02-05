@@ -11,10 +11,14 @@ module.exports = function karmaConfig (config) {
     // 1. install corresponding karma launcher
     //    http://karma-runner.github.io/0.13/config/browsers.html
     // 2. add it to the `browsers` array below.
-    browsers: ['PhantomJS'],
-    frameworks: ['mocha', 'sinon-chai', 'phantomjs-shim'],
-    reporters: ['spec', 'coverage'],
+    browsers: ['FirefoxHeadless','ChromeHeadless'],
+    frameworks: ['mocha', 'sinon-chai'],
+    reporters: ['spec', 'coverage', 'junit'],
     files: ['./index.js'],
+    autoWatch: true,
+    singleRun: true,
+    browserDisconnectTimeout: 210000,
+    browserNoActivityTimeout: 210000,
     preprocessors: {
       './index.js': ['webpack', 'sourcemap']
     },
@@ -25,9 +29,12 @@ module.exports = function karmaConfig (config) {
     coverageReporter: {
       dir: './coverage',
       reporters: [
-        { type: 'lcov', subdir: '.' },
-        { type: 'text-summary' }
+        { type: 'lcov', subdir: '.' }
       ]
+    },
+    junitReporter: {
+      
+      outputFile: './test-results.xml', // if included, results will be saved as $outputDir/$browserName/$outputFile
     }
   })
 }
